@@ -27,7 +27,6 @@ Si le niveau d'eau est trop bas, la pompe ne s'activera pas.
 
 La première étape sera d'installer le détecteur d'humidité
 Commencer par tester les données obtenues par un detecteur d'humidite.
-Verser un peu d'eau sur la plante pour voir la difference quand le sol est sec vs quand le sol est humide.
 
 ```c
 #define DetecteurHumidite A2
@@ -44,13 +43,36 @@ void loop() {
 ```
 
 Telechargez ce code sur l'arduino.
-Une fois que le sensor est bien fonctionnel, saturez la plante d'eau et notez le niveau d'humidité sur un papier.
-Cette valeur vous servira plus tard dans le code.
+Une fois que le sensor est bien fonctionnel, notez la valeur du sol quand il est sec. Elle vous servira comme valeur de seuil darrosage plus tard. Une fois que cette valeur est notée, vous pouvez experimenter et faire observer les changement de mesure quand le sol est humide..
 
+## définir une fonction pour détecter l'humidité
+Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé par la pompe et combien de temps la pompe doit etre activée, ces variables sont situées au début du code. Vous pouvez définir la variable seuilDeSecheresse comme étant la valeur notée dans l'étape précédante. <mark>La fonction activer pompe sera définie plus tard.</mark>
+```c
+#define DetecteurHumidite A2
 
-## collapsible markdown?
+int seuilDeSecheresse;
+int tempsDarrosage;
+float niveauDeau;
 
-<details><summary>CLICK ME</summary>
+void setup() {
+	Serial.begin(9600);
+	pinMode(DetecteurHumidite, INPUT);
+}
+
+void loop() {
+	verifierHumidite();
+	delay(2000);
+}
+
+void verifierHumidite(){
+	//définir la fonction
+}
+
+void activerPompe(){
+}
+```
+
+<details><summary>Voir la fonction/summary>
 <p>
 
 ```c
@@ -58,11 +80,8 @@ void verifierHumidite(){
 	humidite = analogRead(DetecteurHumidite);
 	Serial.println(humidite);
 	//si le sol est sec, activer la pompe
-	if (humidite < seuilSecheresse && niveauDeau > 0){
-		Serial.println('x');
-		digitalWrite(Relais, HIGH);
-		delay(tempsDarrosage);
-		digitalWrite(Relais, LOW);
+	if (humidite < seuilSecheresse ){
+		activerPompe();
 	}
 }
 ```
