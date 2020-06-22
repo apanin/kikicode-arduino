@@ -56,8 +56,6 @@ Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé
 #define DetecteurHumidite A2
 
 +int seuilDeSecheresse;
-+int tempsDarrosage;
-float niveauDeau;
 
 void setup() {
 	Serial.begin(9600);
@@ -95,3 +93,52 @@ void verifierHumidite(){
 </details>
 
 ## Définir la fonction pour activer la pompe
+
+###Ajouter les élements nécéssaire au circuit 
+
+Un relais est un interrupteur que l'on peut ouvrir et fermer à l'aide d'un signal electrique. Il permet a un element du circuit d'être alimenter par une source extérieur tout en étant activé par le microcontrolleur. Si vous vous interessez aux relais vous pouvez en lire plus [ici](https://diyi0t.com/relay-tutorial-for-arduino-and-esp8266/)
+
+
+###Faire la fonction
+
+Une fois le circuit completé, vous allez maintenant définir la fonction pour activer la pompe.
+
+```c
+#define DetecteurHumidite A2
++#define Relais 3
+
+int seuilDeSecheresse;
++int tempDarrosage;
+void setup() {
+	Serial.begin(9600);
+	pinMode(DetecteurHumidite, INPUT);
+}
+
+void loop() {
+	verifierHumidite();
+	delay(2000);
+}
+
+void verifierHumidite(){
+	+//définir la fonction
+}
+
++void activerPompe(){
+	+//définir la fonction
++}
+```
+
+<details><summary>Voir la fonction </summary>
+<p>
+
+```c
+void activerPompe(){
+	digitalWrite(Relais, HIGH);
+	delay(tempsDarrosage);
+	digitalWrite(Relais, LOW);
+}
+```
+</p>
+</details>
+
+Attention, ne testez pas la pompe a l'exterieur de l'eau
