@@ -50,6 +50,8 @@ Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé
 <div class="text-white bg-blue mb-2">
 	La fonction activer pompe sera définie plus tard.
 </div>
+
+```c
 #define DetecteurHumidite A2
 
 int seuilDeSecheresse;
