@@ -29,6 +29,8 @@ Si le niveau d'eau est trop bas, la pompe ne s'activera pas.
 La première étape sera d'installer le détecteur d'humidité
 Commencer par tester les données obtenues par un detecteur d'humidite.
 
+<img src="https://github.com/apanin/ParticleKeyeStudio37sensorKitExamples/blob/master/images/s2.png" width="50%" height="50%" />
+
 ```c
 #define DetecteurHumidite A2
 
@@ -258,7 +260,9 @@ pixels.fill(COULEUR);
 pixels.show();
 ```
 
-## Résulta
+## Résultat
+
+![hippo](https://media.giphy.com/media/XCrMPYwVM7yFeUh4P2/giphy.gif)
 
 <details><summary>Voir le code entier </summary>
 <p>
