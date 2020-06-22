@@ -51,6 +51,10 @@ Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé
 	La fonction activer pompe sera définie plus tard.
 </div>
 
+<div class="text-white bg-blue mb-2">
+	.text-white on .bg-blue
+</div>
+
 ```c
 #define DetecteurHumidite A2
 
