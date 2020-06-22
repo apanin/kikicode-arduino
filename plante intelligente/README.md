@@ -1,6 +1,8 @@
 # Plante intelligente
 
-https://diyi0t.com/relay-tutorial-for-arduino-and-esp8266/
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/IMG_5577.JPG" width="50%" height="50%" />
+
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/IMG_6219.JPG" width="50%" height="50%" />
 
 
 ## Brief
@@ -28,8 +30,6 @@ Si le niveau d'eau est trop bas, la pompe ne s'activera pas.
 
 La première étape sera d'installer le détecteur d'humidité
 Commencer par tester les données obtenues par un detecteur d'humidite.
-
-<img src="https://github.com/apanin/ParticleKeyeStudio37sensorKitExamples/blob/master/images/s2.png" width="50%" height="50%" />
 
 ```c
 #define DetecteurHumidite A2
@@ -262,7 +262,7 @@ pixels.show();
 
 ## Résultat
 
-![Farmers Market Finder Demo](https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/Animated%20GIF-downsized_large.gif)
+![Demo](https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/Animated%20GIF-downsized_large.gif)
 
 <details><summary>Voir le code entier </summary>
 <p>
