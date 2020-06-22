@@ -94,12 +94,12 @@ void verifierHumidite(){
 
 ## Définir la fonction pour activer la pompe
 
-###Ajouter les élements nécéssaire au circuit 
+### Ajouter les élements nécéssaire au circuit 
 
 Un relais est un interrupteur que l'on peut ouvrir et fermer à l'aide d'un signal electrique. Il permet a un element du circuit d'être alimenter par une source extérieur tout en étant activé par le microcontrolleur. Si vous vous interessez aux relais vous pouvez en lire plus [ici](https://diyi0t.com/relay-tutorial-for-arduino-and-esp8266/)
 
 
-###Faire la fonction
+### Faire la fonction
 
 Une fois le circuit completé, vous allez maintenant définir la fonction pour activer la pompe.
 
@@ -142,3 +142,82 @@ void activerPompe(){
 </details>
 
 Attention, ne testez pas la pompe a l'exterieur de l'eau
+
+## Mettre le détecteur de niveau d'eau;
+
+Ajoutez les élements suivants au circuit
+
+Une fois que les elements sont ajoutés faites une fonction pour calculer le niveau d'eau.
+Ouvrez un autre onglet et faites notez les valeurs en fonction de 3 niveaux d'eau différents (bas, moyen, haut). Ces valeurs serviront d'intervales pour la fonction de la prochaine étape.
+
+```c
+#define DetecteurHumidite A2
+
+void setup() {
+	Serial.begin(9600);
+	pinMode(DetecteurHumidite, INPUT);
+}
+
+void loop() {
+	Serial.println(analogRead(DetecteurHumidite);
+	delay(2000);	
+}
+```
+
+Une fois que vous avez noté les resultats vous pouvez faire une fonction 
+```c
+#define DetecteurHumidite A2
+#define Relais 3
+#define DetecteurNiveauDeau A3
+
+int seuilDeSecheresse = 700;
+int tempDarrosage = 500;
+void setup() {
+	Serial.begin(9600);
+	pinMode(DetecteurHumidite, INPUT);
+}
+
+void loop() {
+	verifierHumidite();
+	delay(2000);
+}
+
+void verifierHumidite(){
+	+//définir la fonction
+}
+
+void activerPompe(){
+	//définir la fonction
+}
+
+void verifierNiveauDeau(){
+	void verifierNiveauDeau(){
+		niveauDeau = analogRead(DetecteurNiveau);
+		if (niveauDeau<=480){ 
+			//rien pour l'instant
+		}
+		else if (niveauDeau>480 && niveauDeau<=705){ 
+			// rien pour l'instant
+		}
+		else if (niveauDeau>705){ 
+			// rien pour l'instant
+		}
+	}
+```
+
+## Detail sur la fonction activer pompe
+
+maintenant que nous avons le niveau de l'eau et nous savons que si elle fonctionne sans eau elle se brise, modifiez la fonction verifierHumidité par celle ci.
+
+```c
+void verifierHumidite(){
+	humidite = analogRead(DetecteurHumidite);
+	Serial.println(humidite);
+	//si le sol est sec, activer la pompe
+	if (humidite < seuilSecheresse && niveauDeau > 480){
+		activerPompe();
+	}
+}
+```
+
+## Ajouter les LEDS
