@@ -59,8 +59,8 @@ Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé
 ```c
 #define DetecteurHumidite A2
 
-int seuilDeSecheresse;
-int tempsDarrosage;
++int seuilDeSecheresse;
++int tempsDarrosage;
 float niveauDeau;
 
 void setup() {
@@ -73,9 +73,9 @@ void loop() {
 	delay(2000);
 }
 
-void verifierHumidite(){
-	//définir la fonction
-}
++void verifierHumidite(){
+	+//définir la fonction
++}
 
 void activerPompe(){
 }
@@ -97,3 +97,5 @@ void verifierHumidite(){
 
 </p>
 </details>
+
+## Définir la fonction pour activer la pompe
