@@ -46,7 +46,11 @@ Telechargez ce code sur l'arduino.
 Une fois que le sensor est bien fonctionnel, notez la valeur du sol quand il est sec. Elle vous servira comme valeur de seuil darrosage plus tard. Une fois que cette valeur est notée, vous pouvez experimenter et faire observer les changement de mesure quand le sol est humide..
 
 ## définir une fonction pour détecter l'humidité
-Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé par la pompe et combien de temps la pompe doit etre activée, ces variables sont situées au début du code. Vous pouvez définir la variable seuilDeSecheresse comme étant la valeur notée dans l'étape précédante. <style="color:red">La fonction activer pompe sera définie plus tard.</style>
+Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé par la pompe et combien de temps la pompe doit etre activée, ces variables sont situées au début du code. Vous pouvez définir la variable seuilDeSecheresse comme étant la valeur notée dans l'étape précédante. 
+```diff
++La fonction activer pompe sera définie plus tard.
+```
+
 ```c
 #define DetecteurHumidite A2
 
