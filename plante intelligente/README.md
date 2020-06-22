@@ -16,14 +16,15 @@ Si le niveau d'eau est trop bas, la pompe ne s'activera pas.
 * bande led 5v
 * relais
 * breadboard
+* batterie 9v
+* prise micro usb b
 
 * une plante
 * un bocal d'eau
 * un tuyau
 
 
-## Étape 1
-#detecteur d'humidité
+## Detecteur d'humidité
 
 La première étape sera d'installer le détecteur d'humidité
 Commencer par tester les données obtenues par un detecteur d'humidite.
@@ -47,15 +48,16 @@ Une fois que le sensor est bien fonctionnel, notez la valeur du sol quand il est
 
 ## définir une fonction pour détecter l'humidité
 Dans notre cas particulier,on cherche a définir quand le sol doit être arrosé par la pompe et combien de temps la pompe doit etre activée, ces variables sont situées au début du code. Vous pouvez définir la variable seuilDeSecheresse comme étant la valeur notée dans l'étape précédante. 
-<div class="text-white bg-blue mb-2">
 	La fonction activer pompe sera définie plus tard.
-</div>
+
 
 
 ```c
 #define DetecteurHumidite A2
 
-+int seuilDeSecheresse;
++ int seuilDeSecheresse;
+
++ float humidite;
 
 void setup() {
 	Serial.begin(9600);
@@ -67,9 +69,9 @@ void loop() {
 	delay(2000);
 }
 
-+void verifierHumidite(){
-	+//définir la fonction
-+}
++ void verifierHumidite(){
+	+ //définir la fonction
++ }
 
 void activerPompe(){
 }
@@ -108,7 +110,7 @@ Une fois le circuit completé, vous allez maintenant définir la fonction pour a
 +#define Relais 3
 
 int seuilDeSecheresse;
-+int tempDarrosage;
++ int tempDarrosage;
 void setup() {
 	Serial.begin(9600);
 	pinMode(DetecteurHumidite, INPUT);
@@ -120,12 +122,12 @@ void loop() {
 }
 
 void verifierHumidite(){
-	+//définir la fonction
+  //définir la fonction
 }
 
-+void activerPompe(){
-	+//définir la fonction
-+}
++ void activerPompe(){
+	+ //définir la fonction
++ }
 ```
 
 <details><summary>Voir la fonction </summary>
@@ -172,6 +174,10 @@ Une fois que vous avez noté les resultats vous pouvez faire une fonction
 
 int seuilDeSecheresse = 700;
 int tempDarrosage = 500;
+
+float humidite;
+float niveauDeau;
+
 void setup() {
 	Serial.begin(9600);
 	pinMode(DetecteurHumidite, INPUT);
@@ -221,3 +227,113 @@ void verifierHumidite(){
 ```
 
 ## Ajouter les LEDS
+
+Ajouter les neopixels au circuit
+
+
+### Modification du code
+
+définir des couleurs dans l'en-tête. Chaque couleur est définie en fonction de (rouge, vert, bleu),
+chacune des valeurs est un int de 0 à 255.
+
+```c
+#define ROUGE pixels.Color(255, 0, 0)
+#define JAUNE pixels.Color(255, 150, 0)
+#define VERT pixels.Color(0, 255, 0)
+#define BLEU pixels.Color(0, 0, 255)
+```
+
+vous pouvez utiliser les couleurs comme telles, mais vous pouvez aussi définir vos propres couleurs.
+
+### ajouter les changements de couleur au code.
+
+Modifiez verifierNiveauDeau() afin que les leds affichent rouge quand le niveau d'eau est bas, jaune quand il est moyen et rouge quand il est bas.
+
+Modifiez activerPompe() pour que les leds affichent bleu quand la pompe est activée.
+
+Pour changer les couleurs des neopixels, vous pouvez utiliser les lignes suivantes
+```c
+pixels.clear();
+pixels.fill(COULEUR);
+pixels.show();
+```
+
+## Résultar
+
+<details><summary>Voir le code entier </summary>
+<p>
+
+```c
+#include <Adafruit_NeoPixel.h>
+
+#define Led A0
+#define DetecteurHumidite A2
+#define DetecteurNiveau A3
+#define Relais 3
+
+float humidite;
+float niveauDeau;
+int seuilSecheresse = 700;
+int tempsDarrosage = 500;
+
+#define ROUGE pixels.Color(255, 0, 0)
+#define JAUNE pixels.Color(255, 150, 0)
+#define VERT pixels.Color(0, 255, 0)
+#define BLEU pixels.Color(0, 0, 255)
+
+	
+Adafruit_NeoPixel pixels(5, Led, NEO_GRB + NEO_KHZ800);
+
+void setup() {
+	Serial.begin(9600);
+	//initializer les bandes de pixels
+	pixels.begin();
+	//definir les modes des pins
+	pinMode(Relais, OUTPUT);
+	pinMode(DetecteurHumidite, INPUT);
+	pinMode(DetecteurNiveau, INPUT);
+}
+
+void loop() {
+	verifierNiveauDeau();
+	verifierHumidite();
+	delay(500);
+}
+
+void verifierNiveauDeau(){
+		pixels.clear();
+		niveauDeau = analogRead(DetecteurNiveau);
+		if (niveauDeau<=200){ 
+			pixels.fill(ROUGE);
+		}
+		else if (niveauDeau>200 && niveauDeau<=400){ 
+			pixels.fill(JAUNE);
+		}
+		else if (niveauDeau>400){ 
+			pixels.fill(VERT);
+		}
+		pixels.show();
+		delay(5000);
+}
+
+
+void verifierHumidite(){
+	humidite = analogRead(DetecteurHumidite);
+
+	//si le sol est sec, activer la pompe
+	if (humidite < seuilSecheresse ){
+		activerPompe();
+	}
+}
+
+void activerPompe(){
+	digitalWrite(Relais, HIGH);
+	pixels.clear();
+	pixels.fill(BLEU);
+	pixels.show();
+	delay(tempsDarrosage);
+	digitalWrite(Relais, LOW);
+}
+```
+</p>
+</details>
