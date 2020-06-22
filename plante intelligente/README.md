@@ -262,7 +262,7 @@ pixels.show();
 
 ## Résultat
 
-![hippo](https://media.giphy.com/media/XCrMPYwVM7yFeUh4P2/giphy.gif)
+![Farmers Market Finder Demo](https://media.giphy.com/media/XCrMPYwVM7yFeUh4P2/giphy.gif)
 
 <details><summary>Voir le code entier </summary>
 <p>
