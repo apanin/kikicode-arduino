@@ -47,36 +47,24 @@ Telechargez ce code sur l'arduino.
 Une fois que le sensor est bien fonctionnel, saturez la plante d'eau et notez le niveau d'humidité sur un papier.
 Cette valeur vous servira plus tard dans le code.
 
-<details>
-	<summary>Voir le code</summary>
-	</p>
-	
-	```c
-	void verifierHumidite(){
-		humidite = analogRead(DetecteurHumidite);
-		Serial.println(humidite);
-		//si le sol est sec, activer la pompe
-		if (humidite < seuilSecheresse && niveauDeau > 0){
-			Serial.println('x');
-			digitalWrite(Relais, HIGH);
-			delay(tempsDarrosage);
-			digitalWrite(Relais, LOW);
-		}
-	}
-	```
-	
-	</p>
-</details>
 
 ## collapsible markdown?
 
 <details><summary>CLICK ME</summary>
 <p>
 
-#### yes, even hidden code blocks!
-
-```python
-print("hello world!")
+```c
+void verifierHumidite(){
+	humidite = analogRead(DetecteurHumidite);
+	Serial.println(humidite);
+	//si le sol est sec, activer la pompe
+	if (humidite < seuilSecheresse && niveauDeau > 0){
+		Serial.println('x');
+		digitalWrite(Relais, HIGH);
+		delay(tempsDarrosage);
+		digitalWrite(Relais, LOW);
+	}
+}
 ```
 
 </p>
