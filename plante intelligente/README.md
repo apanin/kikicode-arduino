@@ -2,8 +2,6 @@
 
 <img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/IMG_5577.JPG" width="50%" height="50%" />
 
-<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/IMG_6219.JPG" width="50%" height="50%" />
-
 
 ## Brief
 Le but de ce projet est de créer une plante qui détecte quand l'humidité de son sol est faible et peu s'arroser
