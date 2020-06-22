@@ -258,7 +258,7 @@ pixels.fill(COULEUR);
 pixels.show();
 ```
 
-## Résultar
+## Résulta
 
 <details><summary>Voir le code entier </summary>
 <p>
