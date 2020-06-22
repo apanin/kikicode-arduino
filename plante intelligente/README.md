@@ -49,6 +49,8 @@ Cette valeur vous servira plus tard dans le code.
 
 <details>
 	<summary>Voir le code</summary>
+	</p>
+	
 	```c
 	void verifierHumidite(){
 		humidite = analogRead(DetecteurHumidite);
@@ -61,5 +63,6 @@ Cette valeur vous servira plus tard dans le code.
 			digitalWrite(Relais, LOW);
 		}
 	}
-	```	
+	```
+	</p>	
 </details>
