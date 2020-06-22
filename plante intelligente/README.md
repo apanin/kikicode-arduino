@@ -262,7 +262,7 @@ pixels.show();
 
 ## Résultat
 
-![Farmers Market Finder Demo](https://media.giphy.com/media/XCrMPYwVM7yFeUh4P2/giphy.gif)
+![Farmers Market Finder Demo](https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/Animated%20GIF-downsized_large.gif)
 
 <details><summary>Voir le code entier </summary>
 <p>
