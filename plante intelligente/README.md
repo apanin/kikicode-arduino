@@ -26,7 +26,11 @@ Si le niveau d'eau est trop bas, la pompe ne s'activera pas.
 
 ## Detecteur d'humidité
 
-La première étape sera d'installer le détecteur d'humidité
+La première étape sera d'installer le détecteur d'humidité comme dans le schema ci-dessous. Installez le detecteur dans le sol de la plante de facon a ce que les deux bandes soient couvert de sol.
+
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/hookup1.png" width="50%" height="50%" />
+
+
 Commencer par tester les données obtenues par un detecteur d'humidite.
 
 ```c
@@ -94,14 +98,18 @@ void verifierHumidite(){
 </p>
 </details>
 
-## Définir la fonction pour activer la pompe
+## La pompe
 
 ### Ajouter les élements nécéssaire au circuit 
+
+Dans cette étape, on utilise un relais ainsi que des batteries pour controller la pompe. Il est important que le la pompe soit submergée par l'eau.
+
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/hookup2.png" width="50%" height="50%" />
 
 Un relais est un interrupteur que l'on peut ouvrir et fermer à l'aide d'un signal electrique. Il permet a un element du circuit d'être alimenter par une source extérieur tout en étant activé par le microcontrolleur. Si vous vous interessez aux relais vous pouvez en lire plus [ici](https://diyi0t.com/relay-tutorial-for-arduino-and-esp8266/)
 
 
-### Faire la fonction
+### Définir la fonction pour la pompe et le relais
 
 Une fois le circuit completé, vous allez maintenant définir la fonction pour activer la pompe.
 
@@ -145,9 +153,11 @@ void activerPompe(){
 
 Attention, ne testez pas la pompe a l'exterieur de l'eau
 
-## Mettre le détecteur de niveau d'eau;
+## Mettre le détecteur de niveau d'eau
 
 Ajoutez les élements suivants au circuit
+
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/hookup3.png" width="50%" height="50%" />
 
 Une fois que les elements sont ajoutés faites une fonction pour calculer le niveau d'eau.
 Ouvrez un autre onglet et faites notez les valeurs en fonction de 3 niveaux d'eau différents (bas, moyen, haut). Ces valeurs serviront d'intervales pour la fonction de la prochaine étape.
@@ -230,6 +240,7 @@ void verifierHumidite(){
 
 Ajouter les neopixels au circuit
 
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/hookup4.png" width="50%" height="50%" />
 
 ### Modification du code
 
@@ -237,6 +248,10 @@ définir des couleurs dans l'en-tête. Chaque couleur est définie en fonction d
 chacune des valeurs est un int de 0 à 255.
 
 ```c
+#include <Adafruit_NeoPixel.h>
+
+#define Led A0
+
 #define ROUGE pixels.Color(255, 0, 0)
 #define JAUNE pixels.Color(255, 150, 0)
 #define VERT pixels.Color(0, 255, 0)
