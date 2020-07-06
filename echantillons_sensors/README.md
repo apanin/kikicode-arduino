@@ -1,4 +1,4 @@
-# CODE ÉCHANTILLONS
+# CODES ÉCHANTILLONS
 
 ## Capacitive touch
 <img src="https://github.com/apanin/kikicode-arduino/blob/master/echantillons_sensors/images/capacitivetouch.png" width="50%" height="50%" />
