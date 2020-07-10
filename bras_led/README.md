@@ -1,6 +1,6 @@
 # Bras robotisé avec LED
 
-<img src="https://github.com/apanin/kikicode-arduino/blob/master/plante%20intelligente/images/IMG_5577.JPG" width="50%" height="50%" />
+<img src="https://github.com/apanin/kikicode-arduino/blob/master/bras_led/hookup.jpg" width="50%" height="50%" />
 
 
 ## LES DÉTECTEUR ULTRASON
